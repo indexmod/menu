@@ -92,7 +92,7 @@
   </style>
 </head>
 <body>
-  <audio id="blop-sound" src="/water-blup-sound-94679" preload="auto"></audio>
+  <audio id="blop-sound" src="/water-blup-sound-94679.mp3" preload="auto"></audio>
 
   <div class="grid" id="iconGrid">
     <a class="icon-link" href="https://air.indexmod.xyz">🌬️</a>
@@ -126,6 +126,25 @@
     const icons = document.querySelectorAll('.icon-link');
     const blop = document.getElementById('blop-sound');
     let index = 0;
+    let unlocked = false;
+
+    // Разрешаем звук после первого взаимодействия (клик/движение мыши/нажатие)
+    function unlockAudio() {
+      if (!unlocked) {
+        blop.play().then(() => {
+          blop.pause();
+          blop.currentTime = 0;
+          unlocked = true;
+          console.log("Звук разблокирован");
+        }).catch(() => {
+          console.warn("Не удалось разблокировать звук сразу");
+        });
+      }
+    }
+
+    document.addEventListener('click', unlockAudio);
+    document.addEventListener('mousemove', unlockAudio);
+    document.addEventListener('keydown', unlockAudio);
 
     // Цикл вибрации по очереди
     setInterval(() => {
@@ -137,8 +156,10 @@
     // Воспроизведение звука при наведении
     icons.forEach(icon => {
       icon.addEventListener('mouseenter', () => {
-        blop.currentTime = 0;
-        blop.play();
+        if (unlocked) {
+          blop.currentTime = 0;
+          blop.play().catch(e => console.warn("Ошибка воспроизведения:", e));
+        }
       });
     });
   </script>
