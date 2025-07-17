@@ -40,7 +40,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 50vh;
+      min-height: 100vh;
     }
 
     .grid {
@@ -48,22 +48,22 @@
       grid-template-columns: repeat(5, 1fr);
       gap: 1.5rem;
       padding: 2rem;
-      max-width: 90vw;
+      max-width: 50vw;
     }
 
     @media (max-width: 768px) {
       .grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
     a.icon-link {
-      font-size: 2.9rem;
+      font-size: 1rem;
       color: #dbe2ef;
       text-decoration: none;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: left;
       transition: transform 0.1s ease-out;
       animation: none;
       will-change: transform;
@@ -76,7 +76,7 @@
     }
 
     .icon-link.active {
-      animation: vibrate 0.4s ease-in-out;
+      animation: vibrate 0.1s ease-in-out;
     }
 
     /* Скейл с "упругостью" */
@@ -88,7 +88,7 @@
     }
 
     .icon-link:hover {
-      animation: pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      animation: pop 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
   </style>
 </head>
@@ -121,6 +121,7 @@
     <a class="icon-link" "https://dream.indexmod.xyz">⚪</a>
     <a class="icon-link" href="https://air.indexmod.xyz">Эфир</a>
     <a class="icon-link" href="https://indexmod.xyz">Indexmod</a>
+        <a class="icon-link" "https://swamp.indexmod.xyz">⚪</a>
   </div>
 
   <script>
